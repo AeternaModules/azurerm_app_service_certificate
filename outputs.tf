@@ -1,3 +1,7 @@
+output "app_service_certificates_id" {
+  description = "Map of id values across all app_service_certificates, keyed the same as var.app_service_certificates"
+  value       = { for k, v in azurerm_app_service_certificate.app_service_certificates : k => v.id }
+}
 output "app_service_certificates_app_service_plan_id" {
   description = "Map of app_service_plan_id values across all app_service_certificates, keyed the same as var.app_service_certificates"
   value       = { for k, v in azurerm_app_service_certificate.app_service_certificates : k => v.app_service_plan_id }
