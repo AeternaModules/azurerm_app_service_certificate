@@ -10,20 +10,28 @@ Optional:
     - key_vault_id
     - key_vault_secret_id
     - password
+    - password_key_vault_id (alternative to password - read from Key Vault instead)
+    - password_key_vault_secret_name (alternative to password - read from Key Vault instead)
     - pfx_blob
+    - pfx_blob_key_vault_id (alternative to pfx_blob - read from Key Vault instead)
+    - pfx_blob_key_vault_secret_name (alternative to pfx_blob - read from Key Vault instead)
     - tags
 EOT
 
   type = map(object({
-    location            = string
-    name                = string
-    resource_group_name = string
-    app_service_plan_id = optional(string)
-    key_vault_id        = optional(string)
-    key_vault_secret_id = optional(string)
-    password            = optional(string)
-    pfx_blob            = optional(string)
-    tags                = optional(map(string))
+    location                       = string
+    name                           = string
+    resource_group_name            = string
+    app_service_plan_id            = optional(string)
+    key_vault_id                   = optional(string)
+    key_vault_secret_id            = optional(string)
+    password                       = optional(string)
+    password_key_vault_id          = optional(string)
+    password_key_vault_secret_name = optional(string)
+    pfx_blob                       = optional(string)
+    pfx_blob_key_vault_id          = optional(string)
+    pfx_blob_key_vault_secret_name = optional(string)
+    tags                           = optional(map(string))
   }))
   validation {
     condition = alltrue([
